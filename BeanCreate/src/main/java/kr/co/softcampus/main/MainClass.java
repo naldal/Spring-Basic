@@ -9,18 +9,18 @@ public class MainClass {
 	public static void main(String[] args) {
 		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("kr/co/softcampus/config/beans.xml");
 		
-		//id°¡ test1ÀÎ bean°´Ã¼ÀÇ ÁÖ¼Ò°ªÀ» ¹Ş¾Æ¿Â´Ù.
+		//idê°€ test1ì¸ beanê°ì²´ì˜ ì£¼ì†Œê°’ì„ ë°›ì•„ì˜¨ë‹¤.
 		TestBean t1 = ctx.getBean("test1", TestBean.class);
 		System.out.println("t1 : "+t1);
 		
 		TestBean t2 = ctx.getBean("test1", TestBean.class);
 		System.out.println("t2 : "+t2);
 		
-		//id°¡ test2ÀÎ bean°´Ã¼ÀÇ ÁÖ¼Ò°ªÀ» ¹Ş¾Æ¿Â´Ù. //lazy-init Àû¿ë¹öÀü
+		//idê°€ test2ì¸ beanê°ì²´ì˜ ì£¼ì†Œê°’ì„ ë°›ì•„ì˜¨ë‹¤. //lazy-init ì ìš©ë²„ì „
 		TestBean t3 = ctx.getBean("test2", TestBean.class);
 		System.out.println("t3 : "+t3);
 		
-		//scope = "prototype" Àû¿ë¹öÀü
+		//scope = "prototype" ì ìš©ë²„ì „
 		TestBean t4 = ctx.getBean("test2", TestBean.class);
 		System.out.println("t4 : "+t4);
 		
