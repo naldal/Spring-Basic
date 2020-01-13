@@ -130,4 +130,8 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
+<<<<<<< HEAD
 .mvn/wrapper/maven-wrapper.jar
+=======
+.mvn/wrapper/maven-wrapper.jar
+>>>>>>> test1
