@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="obj1" class="kr.co.softcampus.beans.TestBean"
+		lazy-init="true" />
+
+	<bean id="obj2" class="kr.co.softcampus.beans.TestBean"
+		lazy-init="true">
+		<constructor-arg value="100" type="int" />	<!-- 매개변수가 하나 있는 생성자가 호출됨,아무 세팅도 하지 않는다면 매개변수가 double인 생성자에도 들어가게 됨 -->
+	</bean>
+
+	<bean id="obj3" class="kr.co.softcampus.beans.TestBean"
+		lazy-init="true">
+		<constructor-arg value="11.11" type="double" />
+	</bean>
+
+	<!-- 아무런 Type속성도 지정하지 않으면 String>double>int ... 타입 순으로 arg가 들어가게 되버림 따라서 
+		Type 속성은 필수적으로 넣어줘야함 -->
+	<bean id="obj4" class="kr.co.softcampus.beans.TestBean"
+		lazy-init="true">
+		<constructor-arg value="문자열" type="String" />
+	</bean>
+
+	<bean id="obj5" class="kr.co.softcampus.beans.TestBean"
+		lazy-init="true">
+		<constructor-arg value="200" type="int" />
+		<constructor-arg value="22" type="double" />
+		<!-- 자바에서 String은 클래스 이므로 패키지를 포함한 클래스 타입을 지정해야함 -->
+		<constructor-arg value="안녕하세요" type="java.lang.String" />
+	</bean>
+
+	<!-- 순서가 맞는 생성자가 없으면 매개변수의 순서와 관계 없이 문자열하나 정수형하나 실수형 하나가 들어있는 생성자를 찾는다 -->
+	<!-- 하지만 타입이 이 세가지를 주입할 수 있는 생성자가 없으면 오류가 난다. + 웬만하면 순서대로 맞출 것 -->
+	<bean id="obj6" class="kr.co.softcampus.beans.TestBean"
+		lazy-init="true">
+		<constructor-arg value="반갑습니다" />
+		<constructor-arg value="300" type="int" />
+		<constructor-arg value="22.22" type="double" />
+	</bean>
+
+	<bean id="obj7" class="kr.co.softcampus.beans.TestBean"
+		lazy-init="true">
+		<constructor-arg value="44.44" index='1' /> <!-- index는 0부터 시작. 두번째에 넣겠다는 의미 -->
+		<constructor-arg value="44" index="0" />
+		<constructor-arg value="안녕하세요" index="2" />
+	</bean>
+
+	<bean id="obj8" class="kr.co.softcampus.beans.TestBean2"
+		lazy-init="true">
+		<constructor-arg>
+			<bean class="kr.co.softcampus.beans.DataBean" /> <!-- 첫번째 매개변수 -->
+		</constructor-arg>
+		<constructor-arg>
+			<bean class="kr.co.softcampus.beans.DataBean" /> <!-- 첫번째 매개변수 -->
+		</constructor-arg>
+	</bean>
+
+	<bean id="data_bean" class="kr.co.softcampus.beans.DataBean"
+		scope="prototype" />
+
+	<bean id="obj9" class="kr.co.softcampus.beans.TestBean2"
+		lazy-init="true">
+		<constructor-arg ref="data_bean" />
+		<constructor-arg ref="data_bean" />
+	</bean>
+
+</beans>
