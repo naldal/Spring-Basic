@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="xml1" class="kr.co.softcampus.beans.TestBean1"/>
+	
+	<bean id="xml2" class="kr.co.softcampus.beans.TestBean2" lazy-init="true"/>
+	
+	<bean id="xml3" class="kr.co.softcampus.beans.TestBean3" scope="prototype"/>
+	
+	<!-- 이 id를 가지고 왔었는데 사실 xml상에 등록되어 있는 빈들ㅇ중에서 똑같은 타입의 빈이 여러
+	개 있을 때 아이디를 쓰면 된다 단 하나의클래스 타입의 빈이 하나만 있다면 id를 지정하지 않아도 상관없다
+	만약 id가 없는 빈을 사용하고자 한다면 class타입만 지정하면 끝이다.-->
+	<bean class="kr.co.softcampus.beans.TestBean4"/>
+	<bean class="kr.co.softcampus.beans.TestBean4" primary="true"/><!-- 똑같은 객체가 정의되어 있다면 primary = true인 객체를 가지고 나온다 -->
+	
+</beans>
