@@ -27,7 +27,7 @@ local.properties
 #log files
 *.log
 upload/
-logs/
+logs/ 
 
 #package files
 *.7z
